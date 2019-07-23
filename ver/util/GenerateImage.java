@@ -14,7 +14,10 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.junit.Before;
 import org.junit.Test;
+
+import com.api.core.Core;
 
 import performance.AndroidMonitor;
 import performance.ImageExcel;
@@ -22,26 +25,41 @@ import performance.pojo;
 
 public class GenerateImage {
 	private static SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
+	private static String prop = null;
+	private static String path = null;
+	private static String packagename =null;
+	private static String savePath =null;
 	
-	@Test
-	public void test2() throws Exception {
+	
+	@Before
+	public void dataPrepare(){
 		File directory = new File(".");
-        String path = null;
         try {
             path = directory.getCanonicalPath();//获取当前路径
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         } 
+		
+        //获取包名
+        packagename =AndroidMonitor.getPackageName();
+        //获取设备名称
+        prop = AndroidMonitor.getprop();
+        //数据存储地址
+        savePath = path+"/"+"performance.xls";
+        
+	}
+	
+
+	
+	@Test
+	public void test2() throws Exception {
 		ImageExcel imageExcel = new ImageExcel();
-		List<pojo> list = new ArrayList<pojo>();
-		String packagename="com.thankyo.hwgame";
+		List<pojo> list = new ArrayList<pojo>();		
 		System.out.println("开始收集数据:.......");
 		double lastsFlow = AndroidMonitor.sFlow(packagename);
 		double lastrFlow = AndroidMonitor.rFlow(packagename);
 		double firstPower = AndroidMonitor.getPower(packagename);
-		String prop = AndroidMonitor.getprop();
 //		System.out.println("lastsFlow"+ lastsFlow);
 		
 		for (int i = 0; i < 20; i++){
@@ -53,20 +71,17 @@ public class GenerateImage {
 			
 			lastsFlow = AndroidMonitor.sFlow(packagename);
 			lastrFlow = AndroidMonitor.rFlow(packagename);
-//			System.out.println("sFlow:"+ sFlow);
-			pojo bi1 = new pojo(Memory, sFlow, rFlow, CPU, Power);
-			int l = i+1;
-			System.out.println("采集数据中："+(i+1)+"次");
-			list.add(bi1);
+			pojo data = new pojo(Memory, sFlow, rFlow, CPU, Power);
+			list.add(data);
 //			System.err.println(df.format(System.currentTimeMillis()));
 		}
 		System.out.println("数据采集完成");
 		//数据储存到excle
-		String savePath = path+"/"+"performance.xls";
+
 		imageExcel.generateExcel(list, savePath, prop+"性能数据");;
 		
 		System.out.println(new File(".").getAbsolutePath());
-		
+	}
 		
 		//每2秒采集一次
 //		try {
@@ -77,6 +92,8 @@ public class GenerateImage {
 //				}
 		
 		
+		@Test
+		public void test3() throws Exception{
 		String valueAxisLabel= null;
 		for(int i =0 ; i < 5; i++){
 			switch(i){
@@ -102,11 +119,7 @@ public class GenerateImage {
 			
 			JFreeChart chart = ChartFactory.createLineChart(valueAxisLabel+"_"+prop, "时间",
 					"", LineChart.createDataset1(i, savePath));
-			
-//			ChartPanel chart =LineChart.createChart(data1);
-//			String outputPath= "D:/Image/"+valueAxisLabel+".png";
 	        String outputPath = path+"/"+valueAxisLabel+".png";
-//	        System.err.println(outputPath);
 			InputAndOutput.saveAsFile(chart, outputPath, 1500, 800);
 			
 		}
@@ -114,17 +127,4 @@ public class GenerateImage {
 	}
 	
 	
-//	@Test
-//	public void test22() throws Exception{
-//		JFreeChart chart = ChartFactory.createLineChart("当前CPU使用率", "时间",
-//				"", LineChart.createDataset());
-//		
-////		ChartPanel chart =LineChart.createChart(data1);
-//		String outputPath= "D:/Image/"+"当前1"+".png";
-////        String outputPath = path+"/"+valueAxisLabel+"_"+prop+".png";
-////        System.err.println(outputPath);
-//
-//			InputAndOutput.saveAsFile(chart, outputPath, 1500, 800);
-//
-//	}
 }

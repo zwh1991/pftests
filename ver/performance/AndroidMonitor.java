@@ -21,7 +21,7 @@ import java.util.List;
 public class AndroidMonitor {
 
 	//获取pid
-	public static String PID(String PackageName) {
+	public static String getPID(String PackageName) {
 
         Process proc = null;
         String str3 = null;
@@ -40,10 +40,7 @@ public class AndroidMonitor {
 
             }
             String str1 = stringBuffer.toString();
-//            String str2 = str1.substring(str1.indexOf(" " + PackageName) - 46, str1.indexOf(" " + PackageName));
-//            String PID = str2.substring(0, 7);
             String PID = str1.trim();
-
             str3 = PID;
         } catch (Exception e) {
             System.err.println(e);
@@ -57,14 +54,15 @@ public class AndroidMonitor {
         return str3;
     }
 	
-	//获取uid
-	public static String UID(String PID) {
+	//获取流量uid
+	public static String getUID(String packagename) {
 
         Process proc = null;
-        String str3 = null;
+        String UID = null;
         try {
             Runtime runtime = Runtime.getRuntime();
-            proc = runtime.exec("adb shell cat /proc/" + PID +"/status");
+            String adb = "adb shell dumpsys package " +packagename+" | grep userId=";
+            proc = runtime.exec(adb);
 
             if (proc.waitFor() != 0) {
                 System.err.println("exit value = " + proc.exitValue());
@@ -77,11 +75,10 @@ public class AndroidMonitor {
 
             }
             String str1 = stringBuffer.toString();
-            String str2 = str1.substring(str1.indexOf("Uid:"), str1.indexOf("Uid:") + 30);
-            String UID = str2.substring(4, 11);
-            UID = UID.trim();
+            String str2 = str1.substring(str1.indexOf("=") + 1, str1.indexOf("=") + 8).trim();
 
-            str3 = UID;
+            UID = str2;
+
         } catch (Exception e) {
             System.err.println(e);
         } finally {
@@ -91,16 +88,17 @@ public class AndroidMonitor {
             }
         }
 
-        return str3;
+        return UID;
     }
 
 	
-	public static String Uid(String PackageName) {
+	public static String getUid(String PackageName) {
 		Process proc = null;
         String str4 = null;
         try {
             Runtime runtime = Runtime.getRuntime();
-            proc = runtime.exec("adb shell ps | grep "+ PackageName);
+            String adb = "adb shell ps | grep "+ PackageName;
+            proc = runtime.exec(adb);
 
             if (proc.waitFor() != 0) {
                 System.err.println("exit value = " + proc.exitValue());
@@ -113,11 +111,8 @@ public class AndroidMonitor {
 
             }
             String str1 = stringBuffer.toString();
-//            String str2 = str1.substring(str1.indexOf("com.thankyo.hwgame")-30, str1.indexOf("Uid:"));
-            String UID = str1.substring(3, 7);
-            UID = UID.trim();
-
-            str4 = "u0"+UID;
+            String str2 = str1.substring(str1.indexOf("_") + 1, str1.indexOf("_") + 8).trim();
+            str4 = "u0"+str2;
         } catch (Exception e) {
             System.err.println(e);
         } finally {
@@ -131,12 +126,9 @@ public class AndroidMonitor {
     }
 	// 获取程序消耗的上传流量
     public static double sFlow(String PackageName) {
-//    	double lsf = lastsFlow;
         double sflow = 0;
         try {
-
-            String PID = PID(PackageName);
-            String UID = UID(PID);
+            String UID = getUID(PackageName);
 
             Runtime runtime = Runtime.getRuntime();
             Process proc = runtime.exec("adb shell cat /proc/uid_stat/" + UID + "/tcp_snd");
@@ -152,22 +144,11 @@ public class AndroidMonitor {
 
                 }
                 String str1 = stringBuffer.toString();
-//                String str2 = str1.substring(str1.indexOf("uid:"), str1.indexOf("uid:") + 120);
-//                String str4 = str2.substring(6, 17);
                 //上传的流量
                 String str4 = str1.trim();
-//                String str6 = str2.substring(68, 75);
-//                str6 = str6.trim();
                 int b = Integer.parseInt(str4);
-//                int a = Integer.parseInt(str6);
-
-//                double sendFlow = a / 1024;
-                 sflow = b / 1024;
-//                sflow = sendFlow/1024;
-//                flow = sendFlow + revFlow;
-                
-                
-//                System.out.println(sflow);
+                sflow = b / 1024;
+                System.out.println("sflow:"+ sflow);
 
             } catch (InterruptedException e) {
                 System.err.println(e);
@@ -190,9 +171,7 @@ public class AndroidMonitor {
 
         double rflow = 0;
         try {
-
-            String PID = PID(PackageName);
-            String UID = UID(PID);
+            String UID = getUID(PackageName);
 
             Runtime runtime = Runtime.getRuntime();
             Process proc = runtime.exec("adb shell cat /proc/uid_stat/" + UID + "/tcp_rcv");
@@ -211,10 +190,7 @@ public class AndroidMonitor {
                 //上传的流量
                 String str4 = str1.trim();
                 int b = Integer.parseInt(str4);
-                 rflow = b / 1024;
-//                rflow = revFlow/1024;
-
-
+                rflow = b / 1024;
             } catch (InterruptedException e) {
                 System.err.println(e);
             } finally {
@@ -276,12 +252,11 @@ public class AndroidMonitor {
     }
 
     public static double getMemory(String PackageName) {
-
         double Heap = 0;
-
         try {
             Runtime runtime = Runtime.getRuntime();
-            Process proc = runtime.exec("adb shell dumpsys meminfo " + PackageName);
+            String adb = "adb shell dumpsys meminfo " + PackageName + "| grep TOTAL:";
+            Process proc = runtime.exec("adb shell dumpsys meminfo " + PackageName + "| grep TOTAL:");
             try {
                 if (proc.waitFor() != 0) {
                     System.err.println("exit value = " + proc.exitValue());
@@ -295,16 +270,12 @@ public class AndroidMonitor {
                 }
 
                 String str1 = stringBuffer.toString();
-//                String str2 = str1.substring(str1.indexOf("Objects") - 60, str1.indexOf("Objects"));
-                String str2 = str1.substring(str1.indexOf("TOTAL:"),str1.indexOf("TOTAL:") + 20);
-//                String str3 = str2.substring(0, 10);
-                String str3 = str2.substring(8, 20);
-                str3 = str3.trim();
-                Heap = Double.parseDouble(str3) / 1024;
-                DecimalFormat df = new DecimalFormat("#.000");
+                String str2 = str1.substring(str1.indexOf("TOTAL:") + 6 ,str1.indexOf("TOTAL SWAP")).trim();
+                Heap = Double.parseDouble(str2) / 1024;
+                DecimalFormat df = new DecimalFormat("#.00");
                 String memory = df.format(Heap);
                 Heap = Double.parseDouble(memory);
-//                System.err.println(Heap);
+                System.err.println("Heap:" + Heap);
 
             } catch (InterruptedException e) {
                 System.err.println(e);
@@ -324,10 +295,10 @@ public class AndroidMonitor {
         return Heap;
     }
     
-
+    //获取电量
     public static double getPower(String PackageName){
     	double power = 0;
-    	String uid = Uid(PackageName);
+    	String uid = getUid(PackageName);
         try {
             Runtime runtime = Runtime.getRuntime();
             Process proc = runtime.exec("adb shell dumpsys batterystats " + PackageName + "| grep "+ uid);
@@ -342,15 +313,12 @@ public class AndroidMonitor {
                     stringBuffer.append(line + " ");
 
                 }
-
                 String str1 = stringBuffer.toString();
-//                String str2 = str1.substring(str1.indexOf("Objects") - 60, str1.indexOf("Objects"));
-                String str2 = str1.substring(str1.indexOf("Uid"),str1.indexOf("Uid") + 20);
-//                String str3 = str2.substring(0, 10);
-                String str3 = str2.substring(11, 15);
-                str3 = str3.trim();
-                power = Double.parseDouble(str3);
-//                System.err.println(Heap);
+                String str2 = str1.substring(str1.indexOf(":") + 1 ,str1.indexOf("("));
+                str2 = str2.trim();
+                power = Double.parseDouble(str2);
+                System.out.print("power:" + power);
+
 
             } catch (InterruptedException e) {
                 System.err.println(e);
@@ -371,9 +339,9 @@ public class AndroidMonitor {
     
     }
     
+    //获取设备名称
     public static String getprop(){
     	String prop = null;
-//    	String uid = Uid(PackageName);
         try {
             Runtime runtime = Runtime.getRuntime();
             Process proc = runtime.exec("adb shell getprop ro.product.model");
@@ -388,16 +356,9 @@ public class AndroidMonitor {
                     stringBuffer.append(line + " ");
 
                 }
-
-                String str1 = stringBuffer.toString();
-//                String str2 = str1.substring(str1.indexOf("Objects") - 60, str1.indexOf("Objects"));
-//                String str2 = str1.substring(str1.indexOf("Uid"),str1.indexOf("Uid") + 20);
-//                String str3 = str2.substring(0, 10);
-//                String str3 = str1.substring(1, 10);
-                String str3 = str1.trim();
-//                power = Double.parseDouble(str3);
-                prop = str3;
-                System.err.println(prop);
+                String str1 = stringBuffer.toString().trim();
+                prop = str1;
+                System.err.println("prop:" + prop);
 
             } catch (InterruptedException e) {
                 System.err.println(e);
@@ -419,9 +380,95 @@ public class AndroidMonitor {
     }
     
     
-//    @Test
-//    public void tets(){
-//    	String ppp= getprop();
-//    	
-//    }
+	//获取包名
+	public static String getPackageName() {
+
+        Process proc = null;
+        String packagename = null;
+        try {
+            Runtime runtime = Runtime.getRuntime();
+            String adb ="adb shell dumpsys activity | grep mFocusedActivity";
+            proc = runtime.exec(adb);
+
+            if (proc.waitFor() != 0) {
+                System.err.println("exit value = " + proc.exitValue());
+            }
+            BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+            StringBuffer stringBuffer = new StringBuffer();
+            String line = null;
+            while ((line = in.readLine()) != null) {
+                stringBuffer.append(line + " ");
+
+            }
+            String str1 = stringBuffer.toString();
+            String str2 = str1.substring(str1.indexOf(".") -4 ,str1.indexOf("/")).trim();
+            packagename = str2;
+            System.out.print("packagename:" + packagename);
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            try {
+                proc.destroy();
+            } catch (Exception e2) {
+            }
+        }
+
+        return packagename;
+    }
+    
+    //获取安卓版本
+    public static String getVersion(){
+    	String version = null;
+        try {
+            Runtime runtime = Runtime.getRuntime();
+            Process proc = runtime.exec("adb shell getprop ro.build.version.release");
+            try {
+                if (proc.waitFor() != 0) {
+                    System.err.println("exit value = " + proc.exitValue());
+                }
+                BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+                StringBuffer stringBuffer = new StringBuffer();
+                String line = null;
+                while ((line = in.readLine()) != null) {
+                    stringBuffer.append(line + " ");
+
+                }
+                String str1 = stringBuffer.toString();
+                String str2 = str1.substring(0,str1.indexOf(".")).trim();
+                version = str2;
+                System.err.println("version:" + version);
+
+            } catch (InterruptedException e) {
+                System.err.println(e);
+            } finally {
+                try {
+                    proc.destroy();
+                } catch (Exception e2) {
+                }
+            }
+        }
+
+        catch (Exception StringIndexOutOfBoundsException) {
+            System.out.print("m请检查设备是否连接");
+            version= "未接入设备" ;
+
+        }
+        return version;
+    
+    }
+	
+	
+    @Test
+    public void tets(){
+    	String packagename ="com.thankyo.hwgame";
+    	getVersion();
+    	getPackageName();
+    	
+    	getUID(packagename);
+    	getUid(packagename);
+    	getMemory(packagename);
+    	getPower(packagename);
+    	String ppp= getprop();
+    	
+    }
 }
