@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="meShow">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="F:/IDE/eclipse"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.7"/>
+        <property name="source" value="1.7"/>
+        <path id="meShow.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="Libs/decode/commons-lang-2.5.jar"/>
+        <pathelement location="Libs/decode/sun.misc.BASE64Decoder.jar"/>
+        <pathelement location="Libs/httpclient/commons-beanutils-1.7.0.jar"/>
+        <pathelement location="Libs/httpclient/commons-codec-1.4.jar"/>
+        <pathelement location="Libs/httpclient/commons-codec-1.6.jar"/>
+        <pathelement location="Libs/httpclient/commons-collections-3.2.jar"/>
+        <pathelement location="Libs/httpclient/commons-httpclient-3.1.jar"/>
+        <pathelement location="Libs/httpclient/commons-logging-1.1.1.jar"/>
+        <pathelement location="Libs/httpclient/httpclient-4.3.4.jar"/>
+        <pathelement location="Libs/httpclient/httpcore-4.3.2.jar"/>
+        <pathelement location="Libs/httpclient/httpmime-4.3.4.jar"/>
+        <pathelement location="Libs/json/fastjson-1.1.22.jar"/>
+        <pathelement location="Libs/json/gson-2.2.4.jar"/>
+        <pathelement location="Libs/junit/hamcrest.jar"/>
+        <pathelement location="Libs/junit/junit.jar"/>
+        <pathelement location="Libs/log4j/log4j-1.2.16.jar"/>
+        <pathelement location="Libs/log4j/mail.jar"/>
+        <pathelement location="Libs/melot/melot-util-1.0.20.jar"/>
+        <pathelement location="Libs/poi/dom4j-1.6.1.jar"/>
+        <pathelement location="Libs/poi/poi-3.8-20120326.jar"/>
+        <pathelement location="Libs/poi/poi-ooxml-3.8-20120326.jar"/>
+        <pathelement location="Libs/poi/poi-ooxml-schemas-3.8-20120326.jar"/>
+        <pathelement location="Libs/poi/stax-api-1.0.1.jar"/>
+        <pathelement location="Libs/poi/xmlbeans-2.3.0.jar"/>
+        <pathelement location="Libs/redis/commons-pool-1.5.5.jar"/>
+        <pathelement location="Libs/redis/jedis-2.1.0.jar"/>
+        <pathelement location="Libs/websocket/websocket.jar"/>
+        <pathelement location="Libs/db/mongo-2.5.3.jar"/>
+        <pathelement location="Libs/poi/jfreechart-1.0.19.jar"/>
+        <pathelement location="Libs/poi/jcommon-1.0.9.jar"/>
+        
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="ver">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="junit"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}" includeAntRuntime="false">
+            <src path="ver"/>
+            <classpath refid="meShow.classpath"/>
+            <compilerarg line="-encoding UTF-8 "/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+	<target name="util">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+        	<jvmarg value="-Dfile.encoding=UTF-8"/>
+            <formatter type="xml"/>
+            <test name="util.GenerateImage" todir="${junit.output.dir}"/>
+			<classpath refid="meShow.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+    <target 
+        depends="clean,build,util"
+        name="autotest">
+    </target>
+</project>

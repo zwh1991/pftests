@@ -1,0 +1,567 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x000000000291a518, pid=3560, tid=5344
+#
+# JRE version: Java(TM) SE Runtime Environment (7.0_79-b15) (build 1.7.0_79-b15)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (24.79-b02 mixed mode windows-amd64 compressed oops)
+# Problematic frame:
+# j  com.api.core.ApplyActor.setSessionId(Ljava/lang/String;Ljava/lang/String;Lcom/api/core/Config;)V+3
+#
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000000246f800):  JavaThread "main" [_thread_in_Java, id=5344, stack(0x00000000027f0000,0x00000000028f0000)]
+
+siginfo: ExceptionCode=0xc0000005, reading address 0xffffffffffffffff
+
+Registers:
+RAX=0x000000073cc23658, RBX=0x00000000024f3031, RCX=0x00000007c1324f48, RDX=0x0000000070000001
+RSP=0x00000000028ee5d0, RBP=0x00000000028ee630, RSI=0x000000073da44cc0, RDI=0x00000000028f6373
+R8 =0x000000000000000c, R9 =0x000000000e982be0, R10=0x000000005a8e9090, R11=0x000000000e982be0
+R12=0x0000000000000000, R13=0x00000000028ee5d8, R14=0x0000000000000000, R15=0x000000000246f800
+RIP=0x000000000291a518, EFLAGS=0x0000000000010202
+
+Top of Stack: (sp=0x00000000028ee5d0)
+0x00000000028ee5d0:   00000000028f6373 00000007c1324f48
+0x00000000028ee5e0:   00000007c131f188 00000007c13212a8
+0x00000000028ee5f0:   00000000028ee5f0 000000073da47a9b
+0x00000000028ee600:   00000000028ee650 000000073da4aaa0
+0x00000000028ee610:   0000000000000000 000000073da47b00
+0x00000000028ee620:   00000000028ee5d8 00000000028ee640
+0x00000000028ee630:   00000000028ee698 00000000028f6198
+0x00000000028ee640:   00000007c1324f48 00000007c131f188
+0x00000000028ee650:   00000007c13212a8 00000000028ee658
+0x00000000028ee660:   000000073cf14866 00000000028ee6a0
+0x00000000028ee670:   000000073d10e3e0 0000000000000000
+0x00000000028ee680:   000000073cf14878 00000000028ee640
+0x00000000028ee690:   00000000028ee6a8 00000000028ee780
+0x00000000028ee6a0:   00000000028f061a 0000000000000000
+0x00000000028ee6b0:   0000000000000000 0000000000000000
+0x00000000028ee6c0:   0000000000000000 0000000000000000 
+
+Instructions: (pc=0x000000000291a518)
+0x000000000291a4f8:   30 4c 89 75 e0 48 8b 9c d8 f8 01 00 00 4c 8d 6c
+0x000000000291a508:   24 08 4c 89 6d f0 41 80 bf 88 03 00 00 00 74 03
+0x000000000291a518:   ff 63 58 ff 63 78 66 90 20 02 00 00 00 00 00 00
+0x000000000291a528:   50 47 71 5a 00 00 00 00 b7 00 00 00 00 00 00 00 
+
+
+Register to memory mapping:
+
+RAX=0x000000073cc23658 is an oop
+{instance class} 
+ - klass: {other class}
+RBX=0x00000000024f3031 is an unknown value
+RCX=0x00000007c1324f48 is an oop
+java.lang.Error 
+ - klass: 'java/lang/Error'
+RDX=0x0000000070000001 is an unknown value
+RSP=0x00000000028ee5d0 is pointing into the stack for thread: 0x000000000246f800
+RBP=0x00000000028ee630 is pointing into the stack for thread: 0x000000000246f800
+RSI=0x000000073da44cc0 is an oop
+{constant pool} 
+ - klass: {other class}
+ - holder: 0x000000073da46798 (extra)
+ - cache: 0x000000073da469c8
+ -   1 :  : 'com/api/core/ApplyActor'
+ -   2 :  : 'com/api/core/ApplyActor'
+ -   3 :  : 'java/lang/Object'
+ -   4 :  : 'java/lang/Object'
+ -   5 :  : '<init>'
+ -   6 :  : '()V'
+ -   7 :  : 'Code'
+ -   8 :  : klass_index=3 name_and_type_index=9
+ -   9 :  : name_index=5 signature_index=6
+ -  10 :  : 'LineNumberTable'
+ -  11 :  : 'LocalVariableTable'
+ -  12 :  : 'this'
+ -  13 :  : 'Lcom/api/core/ApplyActor;'
+ -  14 :  : 'setSessionId'
+ -  15 :  : '(Ljava/lang/String;Ljava/lang/String;Lcom/api/core/Config;)V'
+ -  16 :  : 'Exceptions'
+ -  17 :  : 'org/apache/commons/httpclient/HttpException'
+ -  18 :  : 'org/apache/commons/httpclient/HttpException'
+ -  19 :  : 'java/io/IOException'
+ -  20 :  : 'java/io/IOException'
+ -  21 :  : 'java/lang/Error' {0x3cc23658}
+ -  22 :  : 'java/lang/Error'
+ -  23 :  : "Unresolved compilation problem: 
+	sessionstr cannot be resolved
+" {0xc1324f68}
+ -  24 :  : 'Unresolved compilation problem: 
+	sessionstr cannot be resolved
+'
+ -  25 :  : klass_index=21 name_and_type_index=26
+ -  26 :  : name_index=5 signature_index=27
+ -  27 :  : '(Ljava/lang/String;)V'
+ -  28 :  : 'setMeshowSessionId'
+ -  29 :  : klass_index=30 name_and_type_index=32
+ -  30 :  : 'com/api/core/Config'
+ -  31 :  : 'com/api/core/Config'
+ -  32 :  : name_index=33 signature_index=34
+ -  33 :  : 'getpostbackgroudHearderlis'
+ -  34 :  : '()Lcom/alibaba/fastjson/JSONObject;'
+ -  35 :  : klass_index=1 name_and_type_index=36
+ -  36 :  : name_index=37 signature_index=38
+ -  37 :  : 'getMeshowSession'
+ -  38 :  : '(Ljava/lang/String;Ljava/lang/String;Lcom/alibaba/fastjson/JSONObject;Lcom/api/core/Config;)V'
+ -  39 :  : klass_index=30 name_and_type_index=40
+ -  40 :  : name_index=41 signature_index=42
+ -  41 :  : 'getSessionidvalue'
+ -  42 :  : '()Ljava/lang/String;'
+ -  43 :  : "Cookie" {0xc13211c8}
+ -  44 :  : 'Cookie'
+ -  45 :  : 'java/lang/StringBuilder'
+ -  46 :  : 'java/lang/StringBuilder'
+ -  47 :  : klass_index=30 name_and_type_index=48
+ -  48 :  : name_index=49 signature_index=42
+ -  49 :  : 'getSessionidName'
+ -  50 :  : klass_index=51 name_and_type_index=53
+ -  51 :  : 'java/lang/String'
+ -  52 :  : 'java/lang/String'
+ -  53 :  : name_index=54 signature_index=55
+ -  54 :  : 'valueOf'
+ -  55 :  : '(Ljava/lang/Object;)Ljava/lang/String;'
+ -  56 :  : klass_index=45 name_and_type_index=26
+ -  57 :  : "=" {0xc3b5a6a0}
+ -  58 :  : '='
+ -  59 :  : klass_index=45 name_and_type_index=60
+ -  60 :  : name_index=61 signature_index=62
+ -  61 :  : 'append'
+ -  62 :  : '(Ljava/lang/String;)Ljava/lang/StringBuilder;'
+ -  63 :  : klass_index=45 name_and_type_index=64
+ -  64 :  : name_index=65 signature_index=42
+ -  65 :  : 'toString'
+ -  66 :  : klass_index=30 name_and_type_index=67
+ -  67 :  : name_index=68 signature_index=69
+ -  68 :  : 'putpostbackgroudHearderlis'
+ -  69 :  : '(Ljava/lang/String;Ljava/lang/String;)V'
+ -  70 :  : 'user'
+ -  71 :  : 'Ljava/lang/String;'
+ -  72 :  : 'password'
+ -  73 :  : 'Config'
+ -  74 :  : 'Lcom/api/core/Config;'
+ -  75 :  : 'StackMapTable'
+ -  76 :  : klass_index=30 name_and_type_index=77
+ -  77 :  : name_index=78 signature_index=42
+ -  78 :  : 'getMeshowUrl'
+ -  79 :  : "/meShowAdmin/login.action?method=login" {0xc1325110}
+ -  80 :  : '/meShowAdmin/login.action?method=login'
+ -  81 :  : "dosubmit=&username=" {0xc1325188}
+ -  82 :  : 'dosubmit=&username='
+ -  83 :  : "&password=" {0xc13251d8}
+ -  84 :  : '&password='
+ -  85 :  : klass_index=86 name_and_type_index=88
+ -  86 :  : 'com/web/execution/HttpConnect'
+ -  87 :  : 'com/web/execution/HttpConnect'
+ -  88 :  : name_index=89 signature_index=90
+ -  89 :  : 'sendPostHeader'
+ -  90 :  : '(Ljava/lang/String;Ljava/lang/String;Lcom/alibaba/fastjson/JSONObject;)Lcom/web/execution/HttpResponds;'
+ -  91 :  : "" {0xc3abb470}
+ -  92 :  : ''
+ -  93 :  : klass_index=94 name_and_type_index=96
+ -  94 :  : 'com/web/execution/HttpResponds'
+ -  95 :  : 'com/web/execution/HttpResponds'
+ -  96 :  : name_index=97 signature_index=98
+ -  97 :  : 'getHeaderList'
+ -  98 :  : '()[Lorg/apache/commons/httpclient/Header;'
+ -  99 :  : klass_index=100 name_and_type_index=102
+ - 100 :  : 'org/apache/commons/httpclient/Header'
+ - 101 :  : 'org/apache/commons/httpclient/Header'
+ - 102 :  : name_index=103 signature_index=42
+ - 103 :  : 'getName'
+ - 104 :  : "Set-Cookie" {0xc1325218}
+ - 105 :  : 'Set-Cookie'
+ - 106 :  : klass_index=51 name_and_type_index=107
+ - 107 :  : name_index=108 signature_index=109
+ - 108 :  : 'equals'
+ - 109 :  : '(Ljava/lang/Object;)Z'
+ - 110 :  : klass_index=100 name_and_type_index=111
+ - 111 :  : name_index=112 signature_index=42
+ - 112 :  : 'getValue'
+ - 113 :  : ";" {0xc3c1c3a0}
+ - 114 :  : ';'
+ - 115 :  : klass_index=51 name_and_type_index=116
+ - 116 :  : name_index=117 signature_index=118
+ - 117 :  : 'split'
+ - 118 :  : '(Ljava/lang/String;)[Ljava/lang/String;'
+ - 119 :  : klass_index=30 name_and_type_index=120
+ - 120 :  : name_index=121 signature_index=27
+ - 121 :  : 'setSessionidName'
+ - 122 :  : klass_index=30 name_and_type_index=123
+ - 123 :  : name_index=124 signature_index=27
+ - 124 :  : 'setSessionidvalue'
+ - 125 :  : 'head'
+ - 126 :  : 'Lcom/alibaba/fastjson/JSONObject;'
+ - 127 :  : 'sessionstr'
+ - 128 :  : 'Lcom/web/execution/HttpResponds;'
+ - 129 :  : 'jsessionid'
+ - 130 :  : 'tp'
+ - 131 :  : 'Lorg/apache/commons/httpclient/Header;'
+ - 132 :  : 'com/alibaba/fastjson/JSONObject'
+ - 133 :  : 'com/alibaba/fastjson/JSONObject'
+ - 134 :  : '[Lorg/apache/commons/httpclient/Header;'
+ - 135 :  : '[Lorg/apache/commons/httpclient/Header;'
+ - 136 :  : 'addGiftOnline'
+ - 137 :  : '(Lcom/api/core/Config;ILjava/lang/String;III)V'
+ - 138 :  : klass_index=51 name_and_type_index=139
+ - 139 :  : name_index=54 signature_index=140
+ - 140 :  : '(I)Ljava/lang/String;'
+ - 141 :  : " " {0xc3add4d8}
+ - 142 :  : ' '
+ - 143 :  : " (" {0xc3fa4470}
+ - 144 :  : ' ('
+ - 145 :  : klass_index=45 name_and_type_index=146
+ - 146 :  : name_index=61 signature_index=147
+ - 147 :  : '(I)Ljava/lang/StringBuilder;'
+ - 148 :  : ")" {0xc1325258}
+ - 149 :  : '币)'
+ - 150 :  : "UTF-8" {0xc3abd4b8}
+ - 151 :  : 'UTF-8'
+ - 152 :  : klass_index=153 name_and_type_index=155
+ - 153 :  : 'java/net/URLEncoder'
+ - 154 :  : 'java/net/URLEncoder'
+ - 155 :  : name_index=156 signature_index=157
+ - 156 :  : 'encode'
+ - 157 :  : '(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;'
+ - 158 :  : "Ф" {0xc1325288}
+ - 159 :  : '提交'
+ - 160 :  : "giftId=" {0xc13252b8}
+ - 161 :  : 'giftId='
+ - 162 :  : "&giftCount=" {0xc13252f0}
+ - 163 :  : '&giftCount='
+ - 164 :  : "&giftAppId=1&giftName=" {0xc1325330}
+ - 165 :  : '&giftAppId=1&giftName='
+ - 166 :  : "&userId=" {0xc1325388}
+ - 167 :  : '&userId='
+ - 168 :  : "&data=save&dosubmit=" {0xc13253c0}
+ - 169 :  : '&data=save&dosubmit='
+ - 170 :  : klass_index=30 name_and_type_index=171
+ - 171 :  : name_index=172 signature_index=71
+ - 172 :  : 'backgroudBaseUrl'
+ - 173 :  : "/meShowAdmin/queryUserStore.action" {0xc1325410}
+ - 174 :  : '/meShowAdmin/queryUserStore.action'
+ - 175 :  : klass_index=176 name_and_type_index=178
+ - 176 :  : 'java/lang/System'
+ - 177 :  : 'java/lang/System'
+ - 178 :  : name_index=179 signature_index=180
+ - 179 :  : 'out'
+ - 180 :  : 'Ljava/io/PrintStream;'
+ - 181 :  : klass_index=182 name_and_type_index=184
+ - 182 :  : 'java/io/PrintStream'
+ - 183 :  : 'java/io/PrintStream'
+ - 184 :  : name_index=185 signature_index=186
+ - 185 :  : 'println'
+ - 186 :  : '(Ljava/lang/Object;)V'
+ - 187 :  : 'config'
+ - 188 :  : 'giftid'
+ - 189 :  : 'I'
+ - 190 :  : 'giftname'
+ - 191 :  : 'giftprice'
+ - 192 :  : 'giftcount'
+ - 193 :  : 'userid'
+ - 194 :  : 'reg1'
+ - 195 :  : 'reg2'
+ - 196 :  : 'reg'
+ - 197 :  : 'getSession'
+ - 198 :  : klass_index=30 name_and_type_index=199
+ - 199 :  : name_index=200 signature_index=42
+ - 200 :  : 'getBackGroudurl'
+ - 201 :  : "loginName=" {0xc1325480}
+ - 202 :  : 'loginName='
+ - 203 :  : "&passWord=" {0xc13254c0}
+ - 204 :  : '&passWord='
+ - 205 :  : 'setActor'
+ - 206 :  : '(Ljava/lang/String;Lcom/alibaba/fastjson/JSONObject;Ljava/lang/String;Ljava/lang/String;Lcom/api/core/Config;)Ljava/lang/String;'
+ - 207 :  : "===========" {0xc1325500}
+ - 208 :  : '==========='
+ - 209 :  : klass_index=45 name_and_type_index=210
+ - 210 :  : name_index=61 signature_index=211
+ - 211 :  : '(Ljava/lang/Object;)Ljava/lang/StringBuilder;'
+ - 212 :  : klass_index=182 name_and_type_index=213
+ - 213 :  : name_index=185 signature_index=27
+ - 214 :  : klass_index=86 name_and_type_index=215
+ - 215 :  : name_index=216 signature_index=217
+ - 216 :  : 'sendPostHeaderJSON'
+ - 217 :  : '(Ljava/lang/String;Lcom/alibaba/fastjson/JSONObject;Lcom/alibaba/fastjson/JSONObject;)Lcom/web/execution/HttpResponds;'
+ - 218 :  : klass_index=94 name_and_type_index=219
+ - 219 :  : name_index=220 signature_index=42
+ - 220 :  : 'getbody'
+ - 221 :  : 'url'
+ - 222 :  : 'content'
+ - 223 :  : 'sessionname'
+ - 224 :  : 'sessionvalue'
+ - 225 :  : 'cancelActor'
+ - 226 :  : '(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/api/core/Config;)Ljava/lang/String;'
+ - 227 :  : klass_index=132 name_and_type_index=9
+ - 228 :  : "userIdStr" {0xc1325540}
+ - 229 :  : 'userIdStr'
+ - 230 :  : klass_index=132 name_and_type_index=231
+ - 231 :  : name_index=232 signature_index=233
+ - 232 :  : 'put'
+ - 233 :  : '(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;'
+ - 234 :  : klass_index=30 name_and_type_index=235
+ - 235 :  : name_index=236 signature_index=69
+ - 236 :  : 'putgetbackgroudHearderlis'
+ - 237 :  : klass_index=30 name_and_type_index=238
+ - 238 :  : name_index=239 signature_index=34
+ - 239 :  : 'getgetbackgroudHearderlis'
+ - 240 :  : klass_index=86 name_and_type_index=241
+ - 241 :  : name_index=242 signature_index=243
+ - 242 :  : 'sendGetBackGroud'
+ - 243 :  : '(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/alibaba/fastjson/JSONObject;)Lcom/web/execution/HttpResponds;'
+ - 244 :  : 'actorid'
+ - 245 :  : 'applyActor'
+ - 246 :  : '(Ljava/lang/String;Ljava/lang/String;I)V'
+ - 247 :  : "Unresolved compilation problem: 
+	The constructor Config() is undefined
+" {0xc1325580}
+ - 248 :  : 'Unresolved compilation problem: 
+	The constructor Config() is undefined
+'
+ - 249 :  : 'setFamily'
+ - 250 :  : '(Ljava/lang/String;Lcom/alibaba/fastjson/JSONObject;Lcom/api/core/Config;I)Ljava/lang/String;'
+ - 251 :  : klass_index=30 name_and_type_index=252
+ - 252 :  : name_index=253 signature_index=71
+ - 253 :  : 'refererApplylist'
+ - 254 :  : klass_index=30 name_and_type_index=255
+ - 255 :  : name_index=256 signature_index=246
+ - 256 :  : 'putFamilyBgHearder'
+ - 257 :  : "sessionId" {0xc1325638}
+ - 258 :  : 'sessionId'
+ - 259 :  : klass_index=132 name_and_type_index=260
+ - 260 :  : name_index=261 signature_index=262
+ - 261 :  : 'remove'
+ - 262 :  : '(Ljava/lang/Object;)Ljava/lang/Object;'
+ - 263 :  : klass_index=30 name_and_type_index=264
+ - 264 :  : name_index=265 signature_index=34
+ - 265 :  : 'getFamilyBgHearder'
+ - 266 :  : 'familyId'
+ - 267 :  : 'applyFamily'
+ - 268 :  : '(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II)V'
+ - 269 :  : 'joinFamily'
+ - 270 :  : '(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;II)V'
+ - 271 :  : klass_index=1 name_and_type_index=272
+ - 272 :  : name_index=267 signature_index=268
+ - 273 :  : 'appId'
+ - 274 :  : 'actorId'
+ - 275 :  : 'familyBgUserId'
+ - 276 :  : 'familyBgPwd'
+ - 277 :  : 'familyType'
+ - 278 :  : 'SourceFile'
+ - 279 :  : 'ApplyActor.java'
+
+RDI=0x00000000028f6373 is at code_begin+2995 in an Interpreter codelet
+return entry points  [0x00000000028f57c0, 0x00000000028f75c0]  7680 bytes
+R8 =0x000000000000000c is an unknown value
+R9 =0x000000000e982be0 is an unknown value
+R10=0x000000005a8e9090 is an unknown value
+R11=0x000000000e982be0 is an unknown value
+R12=0x0000000000000000 is an unknown value
+R13=0x00000000028ee5d8 is pointing into the stack for thread: 0x000000000246f800
+R14=0x0000000000000000 is an unknown value
+R15=0x000000000246f800 is a thread
+
+
+Stack: [0x00000000027f0000,0x00000000028f0000],  sp=0x00000000028ee5d0,  free space=1017k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+j  com.api.core.ApplyActor.setSessionId(Ljava/lang/String;Ljava/lang/String;Lcom/api/core/Config;)V+3
+j  testcase.CheckList.applyactor.DataInit()V+22
+v  ~StubRoutines::call_stub
+V  [jvm.dll+0x1cf7f3]
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x000000000fda5800 JavaThread "ReaderThread" [_thread_in_native, id=1128, stack(0x00000000104d0000,0x00000000105d0000)]
+  0x000000000e667800 JavaThread "Service Thread" daemon [_thread_blocked, id=5892, stack(0x000000000fbb0000,0x000000000fcb0000)]
+  0x000000000e663800 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=7712, stack(0x000000000f940000,0x000000000fa40000)]
+  0x000000000e662000 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=6620, stack(0x000000000f520000,0x000000000f620000)]
+  0x000000000e649000 JavaThread "JDWP Command Reader" daemon [_thread_in_native, id=6464, stack(0x000000000f810000,0x000000000f910000)]
+  0x000000000e646000 JavaThread "JDWP Event Helper Thread" daemon [_thread_blocked, id=8008, stack(0x000000000f660000,0x000000000f760000)]
+  0x000000000d236800 JavaThread "JDWP Transport Listener: dt_socket" daemon [_thread_blocked, id=7664, stack(0x000000000f3b0000,0x000000000f4b0000)]
+  0x000000000e640800 JavaThread "Attach Listener" daemon [_thread_blocked, id=5904, stack(0x000000000ec40000,0x000000000ed40000)]
+  0x000000000d22d000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=6788, stack(0x000000000eaa0000,0x000000000eba0000)]
+  0x000000000d1cb800 JavaThread "Finalizer" daemon [_thread_blocked, id=7420, stack(0x000000000e530000,0x000000000e630000)]
+  0x000000000d1c4800 JavaThread "Reference Handler" daemon [_thread_blocked, id=5848, stack(0x000000000e350000,0x000000000e450000)]
+=>0x000000000246f800 JavaThread "main" [_thread_in_Java, id=5344, stack(0x00000000027f0000,0x00000000028f0000)]
+
+Other Threads:
+  0x000000000d1c1000 VMThread [stack: 0x000000000e230000,0x000000000e330000] [id=1092]
+  0x000000000e685800 WatcherThread [stack: 0x000000000fa40000,0x000000000fb40000] [id=6600]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ PSYoungGen      total 57344K, used 18235K [0x00000007c0a00000, 0x00000007c7a00000, 0x0000000800000000)
+  eden space 49664K, 21% used [0x00000007c0a00000,0x00000007c1455b40,0x00000007c3a80000)
+  from space 7680K, 99% used [0x00000007c3a80000,0x00000007c41f9320,0x00000007c4200000)
+  to   space 7680K, 0% used [0x00000007c7280000,0x00000007c7280000,0x00000007c7a00000)
+ ParOldGen       total 129536K, used 5964K [0x0000000741e00000, 0x0000000749c80000, 0x00000007c0a00000)
+  object space 129536K, 4% used [0x0000000741e00000,0x00000007423d3230,0x0000000749c80000)
+ PSPermGen       total 21504K, used 14636K [0x000000073cc00000, 0x000000073e100000, 0x0000000741e00000)
+  object space 21504K, 68% used [0x000000073cc00000,0x000000073da4b000,0x000000073e100000)
+
+Card table byte_map: [0x00000000058f0000,0x0000000005f10000] byte_map_base: 0x0000000001f0a000
+
+Polling page: 0x0000000000220000
+
+Code Cache  [0x00000000028f0000, 0x0000000002b60000, 0x00000000058f0000)
+ total_blobs=578 nmethods=280 adapters=258 free_code_cache=47898Kb largest_free_block=48994240
+
+Compilation events (10 events):
+Event: 2.103 Thread 0x000000000e663800 nmethod 277 0x0000000002a1d190 code [0x0000000002a1d2e0, 0x0000000002a1d498]
+Event: 2.103 Thread 0x000000000e663800  278             org.apache.xmlbeans.impl.values.XmlObjectBase::has_store (16 bytes)
+Event: 2.103 Thread 0x000000000e663800 nmethod 278 0x0000000002a1b350 code [0x0000000002a1b480, 0x0000000002a1b4f8]
+Event: 2.103 Thread 0x000000000e663800  279             org.apache.xmlbeans.impl.store.Xobj::getUser (145 bytes)
+Event: 2.120 Thread 0x000000000e663800 nmethod 279 0x0000000002a21590 code [0x0000000002a21880, 0x0000000002a22b20]
+Event: 2.121 Thread 0x000000000e663800  280             org.apache.xmlbeans.impl.piccolo.xml.PiccoloLexer::resolveNamespacePrefixes (79 bytes)
+Event: 2.128 Thread 0x000000000e663800 nmethod 280 0x0000000002a1ead0 code [0x0000000002a1ec60, 0x0000000002a1f2b8]
+Event: 2.128 Thread 0x000000000e663800  281             org.apache.xmlbeans.impl.piccolo.xml.PiccoloLexer::parseAttributesNS (738 bytes)
+Event: 2.158 Thread 0x000000000e662000 nmethod 261 0x0000000002a29650 code [0x0000000002a29a80, 0x0000000002a2d520]
+Event: 2.172 Thread 0x000000000e663800 nmethod 281 0x0000000002a33610 code [0x0000000002a339e0, 0x0000000002a35408]
+
+GC Heap History (2 events):
+Event: 1.776 GC heap before
+{Heap before GC invocations=1 (full 0):
+ PSYoungGen      total 57344K, used 49664K [0x00000007c0a00000, 0x00000007c4980000, 0x0000000800000000)
+  eden space 49664K, 100% used [0x00000007c0a00000,0x00000007c3a80000,0x00000007c3a80000)
+  from space 7680K, 0% used [0x00000007c4200000,0x00000007c4200000,0x00000007c4980000)
+  to   space 7680K, 0% used [0x00000007c3a80000,0x00000007c3a80000,0x00000007c4200000)
+ ParOldGen       total 129536K, used 0K [0x0000000741e00000, 0x0000000749c80000, 0x00000007c0a00000)
+  object space 129536K, 0% used [0x0000000741e00000,0x0000000741e00000,0x0000000749c80000)
+ PSPermGen       total 21504K, used 13967K [0x000000073cc00000, 0x000000073e100000, 0x0000000741e00000)
+  object space 21504K, 64% used [0x000000073cc00000,0x000000073d9a3ef8,0x000000073e100000)
+Event: 1.795 GC heap after
+Heap after GC invocations=1 (full 0):
+ PSYoungGen      total 57344K, used 7652K [0x00000007c0a00000, 0x00000007c7a00000, 0x0000000800000000)
+  eden space 49664K, 0% used [0x00000007c0a00000,0x00000007c0a00000,0x00000007c3a80000)
+  from space 7680K, 99% used [0x00000007c3a80000,0x00000007c41f9320,0x00000007c4200000)
+  to   space 7680K, 0% used [0x00000007c7280000,0x00000007c7280000,0x00000007c7a00000)
+ ParOldGen       total 129536K, used 5964K [0x0000000741e00000, 0x0000000749c80000, 0x00000007c0a00000)
+  object space 129536K, 4% used [0x0000000741e00000,0x00000007423d3230,0x0000000749c80000)
+ PSPermGen       total 21504K, used 13967K [0x000000073cc00000, 0x000000073e100000, 0x0000000741e00000)
+  object space 21504K, 64% used [0x000000073cc00000,0x000000073d9a3ef8,0x000000073e100000)
+}
+
+Deoptimization events (10 events):
+Event: 1.341 Thread 0x000000000246f800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000029c3240 method=java.util.Properties$LineReader.readLine()I @ 402
+Event: 1.755 Thread 0x000000000246f800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000029d3478 method=java.util.HashMap.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; @ 105
+Event: 1.756 Thread 0x000000000246f800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000029d3478 method=java.util.HashMap.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; @ 105
+Event: 1.756 Thread 0x000000000246f800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000029d3478 method=java.util.HashMap.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; @ 105
+Event: 1.757 Thread 0x000000000246f800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000029d3478 method=java.util.HashMap.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; @ 105
+Event: 1.913 Thread 0x000000000246f800 Uncommon trap: reason=unreached action=reinterpret pc=0x00000000029f4a68 method=org.apache.xmlbeans.impl.piccolo.xml.PiccoloLexer.parseAttributeNameNS()V @ 378
+Event: 2.122 Thread 0x000000000246f800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000002a22580 method=org.apache.xmlbeans.impl.store.Xobj.getUser()Lorg/apache/xmlbeans/impl/values/TypeStoreUser; @ 122
+Event: 2.123 Thread 0x000000000246f800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000002a22580 method=org.apache.xmlbeans.impl.store.Xobj.getUser()Lorg/apache/xmlbeans/impl/values/TypeStoreUser; @ 122
+Event: 2.123 Thread 0x000000000246f800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000002a22580 method=org.apache.xmlbeans.impl.store.Xobj.getUser()Lorg/apache/xmlbeans/impl/values/TypeStoreUser; @ 122
+Event: 2.123 Thread 0x000000000246f800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000002a22580 method=org.apache.xmlbeans.impl.store.Xobj.getUser()Lorg/apache/xmlbeans/impl/values/TypeStoreUser; @ 122
+
+Internal exceptions (10 events):
+Event: 1.968 Thread 0x000000000246f800 Threw 0x00000007c1118558 at C:\re\jdk7u79\2331\hotspot\src\share\vm\prims\jvm.cpp:1304
+Event: 1.969 Thread 0x000000000246f800 Threw 0x00000007c111c9d0 at C:\re\jdk7u79\2331\hotspot\src\share\vm\prims\jvm.cpp:1304
+Event: 1.969 Thread 0x000000000246f800 Threw 0x00000007c1123108 at C:\re\jdk7u79\2331\hotspot\src\share\vm\prims\jvm.cpp:1304
+Event: 1.970 Thread 0x000000000246f800 Threw 0x00000007c1127d60 at C:\re\jdk7u79\2331\hotspot\src\share\vm\prims\jvm.cpp:1304
+Event: 1.970 Thread 0x000000000246f800 Threw 0x00000007c112c190 at C:\re\jdk7u79\2331\hotspot\src\share\vm\prims\jvm.cpp:1304
+Event: 1.971 Thread 0x000000000246f800 Threw 0x00000007c1133f00 at C:\re\jdk7u79\2331\hotspot\src\share\vm\prims\jvm.cpp:1304
+Event: 1.971 Thread 0x000000000246f800 Threw 0x00000007c1139330 at C:\re\jdk7u79\2331\hotspot\src\share\vm\prims\jvm.cpp:1304
+Event: 1.986 Thread 0x000000000246f800 Threw 0x00000007c11960c8 at C:\re\jdk7u79\2331\hotspot\src\share\vm\prims\jvm.cpp:1304
+Event: 1.986 Thread 0x000000000246f800 Threw 0x00000007c119ad20 at C:\re\jdk7u79\2331\hotspot\src\share\vm\prims\jvm.cpp:1304
+Event: 2.126 Thread 0x000000000246f800 Threw 0x00000007c1321790 at C:\re\jdk7u79\2331\hotspot\src\share\vm\prims\jvm.cpp:1304
+
+Events (10 events):
+Event: 26.307 Executing VM operation: GetOrSetLocal
+Event: 26.307 Executing VM operation: GetOrSetLocal done
+Event: 26.308 Executing VM operation: GetOrSetLocal
+Event: 26.308 Executing VM operation: GetOrSetLocal done
+Event: 30.542 Executing VM operation: EnterInterpOnlyMode
+Event: 30.542 Executing VM operation: EnterInterpOnlyMode done
+Event: 30.542 Executing VM operation: GetCurrentLocation
+Event: 30.542 Executing VM operation: GetCurrentLocation done
+Event: 30.542 Executing VM operation: ChangeSingleStep
+Event: 30.542 Executing VM operation: ChangeSingleStep done
+
+
+Dynamic libraries:
+0x000000013fb40000 - 0x000000013fb73000 	E:\jdk\bin\javaw.exe
+0x0000000077b90000 - 0x0000000077d3a000 	C:\Windows\SYSTEM32\ntdll.dll
+0x0000000077970000 - 0x0000000077a8f000 	C:\Windows\system32\kernel32.dll
+0x000007fefdb60000 - 0x000007fefdbca000 	C:\Windows\system32\KERNELBASE.dll
+0x000007fefed50000 - 0x000007fefee2b000 	C:\Windows\system32\ADVAPI32.dll
+0x000007feff520000 - 0x000007feff5bf000 	C:\Windows\system32\msvcrt.dll
+0x000007feffd20000 - 0x000007feffd3f000 	C:\Windows\SYSTEM32\sechost.dll
+0x000007feffd70000 - 0x000007feffe9d000 	C:\Windows\system32\RPCRT4.dll
+0x0000000077a90000 - 0x0000000077b8a000 	C:\Windows\system32\USER32.dll
+0x000007feff250000 - 0x000007feff2b7000 	C:\Windows\system32\GDI32.dll
+0x000007fefee30000 - 0x000007fefee3e000 	C:\Windows\system32\LPK.dll
+0x000007feff310000 - 0x000007feff3db000 	C:\Windows\system32\USP10.dll
+0x000007fefc090000 - 0x000007fefc284000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.18837_none_fa3b1e3d17594757\COMCTL32.dll
+0x000007feff1d0000 - 0x000007feff241000 	C:\Windows\system32\SHLWAPI.dll
+0x000007feffd40000 - 0x000007feffd6e000 	C:\Windows\system32\IMM32.DLL
+0x000007fefdeb0000 - 0x000007fefdfb9000 	C:\Windows\system32\MSCTF.dll
+0x000000005b780000 - 0x000000005b852000 	E:\jdk\bin\msvcr100.dll
+0x000000005a1a0000 - 0x000000005a975000 	E:\jdk\bin\server\jvm.dll
+0x000007fefa4f0000 - 0x000007fefa4f9000 	C:\Windows\system32\WSOCK32.dll
+0x000007feff2c0000 - 0x000007feff30d000 	C:\Windows\system32\WS2_32.dll
+0x000007fefdca0000 - 0x000007fefdca8000 	C:\Windows\system32\NSI.dll
+0x000007fef8720000 - 0x000007fef875b000 	C:\Windows\system32\WINMM.dll
+0x0000000077d60000 - 0x0000000077d67000 	C:\Windows\system32\PSAPI.DLL
+0x0000000067460000 - 0x000000006746f000 	E:\jdk\bin\verify.dll
+0x0000000064590000 - 0x00000000645b8000 	E:\jdk\bin\java.dll
+0x0000000061e80000 - 0x0000000061eb5000 	E:\jdk\bin\jdwp.dll
+0x0000000065f90000 - 0x0000000065f98000 	E:\jdk\bin\npt.dll
+0x0000000065d10000 - 0x0000000065d25000 	E:\jdk\bin\zip.dll
+0x0000000064580000 - 0x0000000064589000 	E:\jdk\bin\dt_socket.dll
+0x000007fefb470000 - 0x000007fefb485000 	C:\Windows\system32\NLAapi.dll
+0x000007fef4130000 - 0x000007fef4145000 	C:\Windows\system32\napinsp.dll
+0x000007fef4110000 - 0x000007fef4129000 	C:\Windows\system32\pnrpnsp.dll
+0x000007fefd010000 - 0x000007fefd065000 	C:\Windows\System32\mswsock.dll
+0x000007fefce90000 - 0x000007fefceeb000 	C:\Windows\system32\DNSAPI.dll
+0x000007fef4100000 - 0x000007fef410b000 	C:\Windows\System32\winrnr.dll
+0x000000006bb10000 - 0x000000006bb36000 	C:\Program Files\Bonjour\mdnsNSP.dll
+0x000007fefafc0000 - 0x000007fefafe7000 	C:\Windows\system32\Iphlpapi.DLL
+0x000007fefafb0000 - 0x000007fefafbb000 	C:\Windows\system32\WINNSI.DLL
+0x000007fefae60000 - 0x000007fefaeb3000 	C:\Windows\System32\fwpuclnt.dll
+0x000007fef5260000 - 0x000007fef5268000 	C:\Windows\system32\rasadhlp.dll
+0x000007fefca30000 - 0x000007fefca37000 	C:\Windows\System32\wshtcpip.dll
+0x0000000065a00000 - 0x0000000065a1a000 	E:\jdk\bin\net.dll
+0x000007fefd000000 - 0x000007fefd007000 	C:\Windows\System32\wship6.dll
+0x0000000065480000 - 0x0000000065491000 	E:\jdk\bin\nio.dll
+0x000007fef0c90000 - 0x000007fef0db5000 	C:\Windows\system32\dbghelp.dll
+
+VM Arguments:
+jvm_args: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:11463 -Dfile.encoding=UTF-8 
+java_command: org.eclipse.jdt.internal.junit.runner.RemoteTestRunner -version 3 -port 11462 -testLoaderClass org.eclipse.jdt.internal.junit4.runner.JUnit4TestLoader -loaderpluginname org.eclipse.jdt.junit4.runtime -test testcase.CheckList.applyactor:N003_yguhu
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=E:\jdk
+CLASSPATH=.;E:\jdk\lib\dt.jar;E:\jdk\lib\tools.jar
+PATH=E:/jdk/bin/server;E:/jdk/bin;E:/jdk/lib/amd64;E:\jdk\bin;E:\android-sdk\platform-tools;E:\android-sdk\tools;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;0X0.000000P-1022NDROID_HOME\tools;E:\jdk\bin;E:\jdk\jre\bin;F:\UltraEdit:C:\Users\ssq\AppData\Local\Programs\Python\Python36;C:\Users\ssq\AppData\Local\Programs\Python\Python36\Scripts\;C:\Users\ssq\AppData\Local\Programs\Python\Python36\;0X0.000006P-1022NDROID_HOME\platform-tools;F:\eclipse64;
+USERNAME=ssq
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 58 Stepping 9, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 , 64 bit Build 7601 Service Pack 1
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 58 stepping 9, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, erms, ht, tsc, tscinvbit, tscinv
+
+Memory: 4k page, physical 12458532k(7114300k free), swap 24915204k(18335436k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (24.79-b02) for windows-amd64 JRE (1.7.0_79-b15), built on Apr 10 2015 12:36:16 by "java_re" with unknown MS VC++:1600
+
+time: Fri Apr 13 18:47:10 2018
+elapsed time: 30 seconds
+

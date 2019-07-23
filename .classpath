@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="ver"/>
+	<classpathentry kind="lib" path="Libs/decode/commons-lang-2.5.jar"/>
+	<classpathentry kind="lib" path="Libs/decode/sun.misc.BASE64Decoder.jar"/>
+	<classpathentry kind="lib" path="Libs/httpclient/commons-beanutils-1.7.0.jar"/>
+	<classpathentry kind="lib" path="Libs/httpclient/commons-codec-1.6.jar"/>
+	<classpathentry kind="lib" path="Libs/httpclient/commons-collections-3.2.jar"/>
+	<classpathentry kind="lib" path="Libs/httpclient/commons-httpclient-3.1.jar"/>
+	<classpathentry kind="lib" path="Libs/httpclient/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="Libs/httpclient/fluent-hc-4.2.5.jar"/>
+	<classpathentry kind="lib" path="Libs/httpclient/httpclient-4.3.4.jar"/>
+	<classpathentry kind="lib" path="Libs/httpclient/httpclient-cache-4.2.5.jar"/>
+	<classpathentry kind="lib" path="Libs/httpclient/httpcore-4.3.2.jar"/>
+	<classpathentry kind="lib" path="Libs/httpclient/httpmime-4.3.4.jar"/>
+	<classpathentry kind="lib" path="Libs/json/fastjson-1.1.22.jar"/>
+	<classpathentry kind="lib" path="Libs/json/gson-2.2.4.jar" sourcepath="E:/project/meShow/meShow/meShowProd/Libs/gson-2.8.5-sources.jar"/>
+	<classpathentry kind="lib" path="Libs/junit/GroboUtils-5-core.jar"/>
+	<classpathentry kind="lib" path="Libs/junit/hamcrest.jar"/>
+	<classpathentry kind="lib" path="Libs/junit/junit.jar"/>
+	<classpathentry kind="lib" path="Libs/log4j/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="Libs/log4j/mail.jar"/>
+	<classpathentry kind="lib" path="Libs/melot/melot-util-1.0.20.jar" sourcepath="E:/project/meShow/meShow/meShowProd/Libs/melot-util-1.0.9-sources.jar"/>
+	<classpathentry kind="lib" path="Libs/poi/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="Libs/poi/stax-api-1.0.1.jar"/>
+	<classpathentry kind="lib" path="Libs/poi/xmlbeans-2.3.0.jar"/>
+	<classpathentry kind="lib" path="Libs/websocket/websocket.jar"/>
+	<classpathentry kind="lib" path="Libs/db/mongo-2.5.3.jar"/>
+	<classpathentry kind="lib" path="Libs/redis/jedis-2.1.0.jar"/>
+	<classpathentry kind="lib" path="Libs/redis/commons-pool-1.5.5.jar"/>
+	<classpathentry kind="lib" path="Libs/httpclient/commons-codec-1.4.jar"/>
+	<classpathentry kind="lib" path="Libs/db/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="Libs/db/postgresql-9.4.1208.jre6.jar"/>
+	<classpathentry kind="lib" path="Libs/json/ezmorph-1.0.6.jar"/>
+	<classpathentry kind="lib" path="Libs/json/json-lib-2.4-jdk15.jar"/>
+	<classpathentry kind="lib" path="/meShow/Libs/hessian-4.0.38.jar"/>
+	<classpathentry kind="lib" path="/meShow/Libs/melot/melot-util-1.0.20.jar"/>
+	<classpathentry kind="lib" path="/meShow/Libs/kkrpc-core-1.0.11.jar"/>
+	<classpathentry kind="lib" path="/meShow/Libs/room-consumption-module-api-1.0.0.jar"/>
+	<classpathentry kind="lib" path="Libs/javacv-platform-1.4.4.jar"/>
+	<classpathentry kind="lib" path="Libs/javacv-0.8.jar"/>
+	<classpathentry kind="lib" path="Libs/poi/jxls-poi-1.1.0.jar"/>
+	<classpathentry kind="lib" path="Libs/poi/jcommon-1.0.9.jar"/>
+	<classpathentry kind="lib" path="Libs/poi/jfreechart-1.0.19.jar"/>
+	<classpathentry kind="lib" path="Libs/poi/poi-ooxml-3.8-20120326.jar"/>
+	<classpathentry kind="lib" path="Libs/poi/poi-ooxml-schemas-3.8-20120326.jar"/>
+	<classpathentry kind="lib" path="Libs/poi/poi-3.8-20120326.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
