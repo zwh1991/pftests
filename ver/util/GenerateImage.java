@@ -34,6 +34,7 @@ public class GenerateImage {
 	@Before
 	public void dataPrepare(){
 		File directory = new File(".");
+//		System.out.println(new File(".").getAbsolutePath());
         try {
             path = directory.getCanonicalPath();//获取当前路径
         } catch (IOException e) {
@@ -46,41 +47,35 @@ public class GenerateImage {
         //获取设备名称
         prop = AndroidMonitor.getprop();
         //数据存储地址
-        savePath = path+"/"+"performance.xls";
-        
+        savePath = path+"/"+"performance.xls";      
 	}
 	
 
-	
 	@Test
-	public void test2() throws Exception {
+	public void N001_GetData() throws Exception {
 		ImageExcel imageExcel = new ImageExcel();
 		List<pojo> list = new ArrayList<pojo>();		
 		System.out.println("开始收集数据:.......");
-		double lastsFlow = AndroidMonitor.sFlow(packagename);
-		double lastrFlow = AndroidMonitor.rFlow(packagename);
+		double firstsFlow = AndroidMonitor.sFlow(packagename);
+		double firstrFlow = AndroidMonitor.rFlow(packagename);
 		double firstPower = AndroidMonitor.getPower(packagename);
-//		System.out.println("lastsFlow"+ lastsFlow);
 		
 		for (int i = 0; i < 20; i++){
 			String Memory = Double.toString(AndroidMonitor.getMemory(packagename));
 			String CPU = Double.toString(AndroidMonitor.getCPU(packagename));
-			String sFlow = Double.toString(AndroidMonitor.sFlow(packagename)-lastsFlow);
-			String rFlow = Double.toString(AndroidMonitor.rFlow(packagename)-lastrFlow);		
+			String sFlow = Double.toString(AndroidMonitor.sFlow(packagename)-firstsFlow);
+			String rFlow = Double.toString(AndroidMonitor.rFlow(packagename)-firstrFlow);		
 			String Power = Double.toString(AndroidMonitor.getPower(packagename)-firstPower);
 			
-			lastsFlow = AndroidMonitor.sFlow(packagename);
-			lastrFlow = AndroidMonitor.rFlow(packagename);
+//			lastsFlow = AndroidMonitor.sFlow(packagename);
+//			lastrFlow = AndroidMonitor.rFlow(packagename);
 			pojo data = new pojo(Memory, sFlow, rFlow, CPU, Power);
 			list.add(data);
-//			System.err.println(df.format(System.currentTimeMillis()));
 		}
 		System.out.println("数据采集完成");
 		//数据储存到excle
+		imageExcel.generateExcel(list, savePath, prop+"性能数据");;		
 
-		imageExcel.generateExcel(list, savePath, prop+"性能数据");;
-		
-		System.out.println(new File(".").getAbsolutePath());
 	}
 		
 		//每2秒采集一次
@@ -92,8 +87,8 @@ public class GenerateImage {
 //				}
 		
 		
-		@Test
-		public void test3() throws Exception{
+	@Test
+	public void N002_CreatePicture() throws Exception{		
 		String valueAxisLabel= null;
 		for(int i =0 ; i < 5; i++){
 			switch(i){
@@ -116,15 +111,13 @@ public class GenerateImage {
 				valueAxisLabel = "数据异常";
 				break;
 			}
-			
 			JFreeChart chart = ChartFactory.createLineChart(valueAxisLabel+"_"+prop, "时间",
 					"", LineChart.createDataset1(i, savePath));
 	        String outputPath = path+"/"+valueAxisLabel+".png";
-			InputAndOutput.saveAsFile(chart, outputPath, 1500, 800);
-			
+			InputAndOutput.saveAsFile(chart, outputPath, 1500, 800);	
 		}
 		System.out.println("图片绘制完成");
-	}
+}
 	
 	
 }
