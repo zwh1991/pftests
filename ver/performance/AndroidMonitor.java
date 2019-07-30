@@ -76,7 +76,6 @@ public class AndroidMonitor {
             }
             String str1 = stringBuffer.toString();
             String str2 = str1.substring(str1.indexOf("=") + 1, str1.length()).trim();
-
             UID = str2;
 
         } catch (Exception e) {
@@ -150,7 +149,7 @@ public class AndroidMonitor {
 
                 }
                 String str1 = stringBuffer.toString();
-                if (str1.equals("cat: /proc/uid_stat/"+ UID + "/tcp_snd: No such file or directory ")){
+                if (str1.contains("No such file or directory")){
                 	System.out.println("No such file or directory");
                 	sflow = -1;
                 }else {
@@ -158,7 +157,7 @@ public class AndroidMonitor {
                     String str4 = str1.trim();
                     int b = Integer.parseInt(str4);
                     sflow = b / 1024;
-                    System.out.println("sflow:"+ sflow);
+                    
                 }
 
 
@@ -174,7 +173,7 @@ public class AndroidMonitor {
             System.out.println("sf请检查设备是否连接");
             sflow = -1;
         }
-
+        System.out.println("sflow:"+ sflow);
         return sflow;
     }
     
@@ -197,12 +196,9 @@ public class AndroidMonitor {
                 String line = null;
                 while ((line = in.readLine()) != null) {
                     stringBuffer.append(line + " ");
-
-                }
-                
-                
+                }    
                 String str1 = stringBuffer.toString();
-                if (str1.equals("cat: /proc/uid_stat/"+ UID + "/tcp_rcv: No such file or directory ")){
+                if (str1.contains("No such file or directory")){
                 	System.out.println("No such file or directory");
                 	rflow = -1;
                 }else {
@@ -225,7 +221,7 @@ public class AndroidMonitor {
             System.out.println("rf请检查设备是否连接");
             rflow = -1;
         }
-
+        System.out.println("rflow:"+ rflow);
         return rflow;
     }
     
@@ -280,7 +276,7 @@ public class AndroidMonitor {
         try {
             Runtime runtime = Runtime.getRuntime();
             String adb = "adb shell dumpsys meminfo " + PackageName + "| grep TOTAL:";
-            Process proc = runtime.exec("adb shell dumpsys meminfo " + PackageName + "| grep TOTAL:");
+            Process proc = runtime.exec(adb);
             try {
                 if (proc.waitFor() != 0) {
                     System.err.println("exit value = " + proc.exitValue());
@@ -530,4 +526,12 @@ public class AndroidMonitor {
     
     }
 
+    
+    @Test
+    public void tests(){
+    	String PackageName = "com.thankyo.hwgame";
+    	getPower(PackageName);
+    	rFlow(PackageName);
+    	sFlow(PackageName);
+    }
 }

@@ -20,8 +20,8 @@ public class Serie implements Serializable {
  
     private static final long serialVersionUID = 1L;
     private String name;// 名字
-    private Vector<Object> data;// 数据值ֵ
- 
+    private Vector<Object> data;// 数据
+    
     public Serie() {
  
     }

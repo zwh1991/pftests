@@ -60,7 +60,7 @@ public class GenerateImage {
 		double firstrFlow = AndroidMonitor.rFlow(packagename);
 		double firstPower = AndroidMonitor.getPower(packagename);
 		
-		for (int i = 0; i < 20; i++){
+		for (int i = 0; i < 10; i++){
 			String Memory = Double.toString(AndroidMonitor.getMemory(packagename));
 			String CPU = Double.toString(AndroidMonitor.getCPU(packagename));
 			String sFlow = Double.toString(AndroidMonitor.sFlow(packagename)-firstsFlow);

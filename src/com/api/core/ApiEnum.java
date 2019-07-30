@@ -6,7 +6,7 @@ import java.net.URLEncoder;
 import org.apache.commons.httpclient.HttpException;
 
 import com.tools.HttpResponds;
-import com.melot.checklist.core.TConfig;
+
 import com.api.core.Core;
 import com.api.core.Config;
 
