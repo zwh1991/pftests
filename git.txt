@@ -1,0 +1,86 @@
+github:https://github.com/zwh1991/pftests
+账号：zwh1991
+密码：Zwh910709
+
+git clone + "复制的地址"
+git inti
+git add .       
+git commit  -m  "提交信息"  
+git push -u origin master
+git checkout 分支名
+
+
+
+jenkins
+账号: zwh
+密码: 1111a1
+
+所有 1.初始化仓库 
+
+（1）新建项目 （init那个勾选上） 
+
+2.初始化项目 
+
+（1）创建一个描述信息的文件 
+touch README.md //里面填写描述信息 
+
+（2）创建一个忽略的文件 
+touch .gitignore //将本地的文件进行忽略，不会到github上 
+
+（3） git init //初始化仓库 
+
+git status //有哪些文件发生了变化 
+
+git add . //将文件从本地推送到暂存区 
+
+git status //查看是否添加成功 
+
+git commit -m ‘注释’ //将文件从暂存区推送到仓库（还是本地仓库，所以这也是为什么要在本地构建一个本地仓库的原因） 
+
+git remote add origin git@github.com:HailongAngel/data-structure-and-arithmetic.git //连接远程的仓库 
+
+git branch //查看分支 
+
+git push -u origin master //本地推送到master上，第一次，会报错 
+
+git pull //将文件拉取过来 
+
+git push -u origin master //当前分支比较落后，所以需要强制推 
+
+git push -u -f origin master //强制推 
+
+git branch -r //查看远程的分支 
+
+git checkout -b v1.0 origin/master /新创建一个分支 
+
+git push origin HEAD -u //推送到远程的分支
+
+streamkar
+
+
+
+以后提交项目 
+
+git add . 
+
+git status 
+
+git commit -m ‘注释’ 
+
+git push
+
+git-gui.exe 运行图形化界面
+
+
+方式一：
+修改远程仓库地址
+
+【git remote set-url origin URL】 更换远程仓库地址，URL为新地址。
+
+
+方式二：
+先删除远程仓库地址，然后再添加
+
+【git remote rm origin】
+ 删除现有远程仓库 
+【git remote add origin url】添加新远程仓库
